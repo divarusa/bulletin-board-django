@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Объявления</h2>
+
+<form method="get" style="margin-bottom: 20px;">
+    <input type="text" name="q" value="{{ query }}" placeholder="Поиск по заголовку и описанию">
+    <select name="category">
+        <option value="">Все категории</option>
+        {% for cat in categories %}
+        <option value="{{ cat.id }}">
+            {{ cat.name }}
+        </option>
+        {% endfor %}
+    </select>
+
+
+    <button type="submit">Найти</button>
+</form>
+
+{% for ad in page_obj %}
+<div class="card">
+    <h3><a href="{% url 'ad_detail' ad.pk %}">{{ ad.title }}</a></h3>
+    <p>Категория: <strong>{{ ad.category.name }}</strong> | Цена: <strong>{{ ad.price }} сом</strong></p>
+</div>
+{% empty %}
+<p>Объявлений пока нет.</p>
+{% endfor %}
+
+<!-- Пагинация с сохранением параметров q и category -->
+<div class="pagination">
+    {% if page_obj.has_previous %}
+    <a href="?page=1&q={{ query }}&category={{ selected_category }}">&laquo; Первая</a>
+    <a href="?page={{ page_obj.previous_page_number }}&q={{ query }}&category={{ selected_category }}">Назад</a>
+    {% endif %}
+
+    <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}&q={{ query }}&category={{ selected_category }}">Вперед</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}&q={{ query }}&category={{ selected_category }}">Последняя
+        &raquo;</a>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Мои объявления</h2>
+{% for ad in ads %}
+<div class="card">
+    <h3><a href="{% url 'ad_detail' ad.pk %}">{{ ad.title }}</a></h3>
+    <p>Цена: {{ ad.price }} сом | Дата: {{ ad.created_at|date:"d.m.Y" }}</p>
+</div>
+{% empty %}
+<p>У вас пока нет созданных объявлений.</p>
+{% endfor %}
+{% endblock %}
