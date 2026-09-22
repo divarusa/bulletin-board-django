@@ -25,4 +25,4 @@ A web application built with Django (MVT architecture) for posting, managing, an
 - **Python 3**
 - **Django 5**
 - **SQLite3**
-- **HTML / CSS**
+- **HTML**
