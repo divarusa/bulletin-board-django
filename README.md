@@ -1,28 +1,31 @@
-# Django Bulletin Board
+# Django Bulletin Board Platform
 
-A web application built with Django (MVT architecture) for posting, managing, and searching classified ads.
+A full-stack web application for managing bulletin boards, publishing announcements, and filtering listings by categories.
 
 ## Key Features
 
-- **Authentication System:** User registration, login, and logout.
-- **Ad Management (CRUD):**
-  - Create, view, edit, and delete ads.
-  - Object-level permissions (users can only edit or delete their own posts).
-- **Search and Filtering:**
-  - Search listings by title and description.
-  - Filter ads by category.
-- **Admin Panel:** Management of users and categories via Django Admin.
-
-## Repository Structure
-
-- **ads/**: Core application containing views, models, forms, and URL routing.
-- **board_project/**: Main project configuration (settings and root URL routing).
-- **templates/**: HTML templates for ads and authentication pages.
-- **requirements.txt**: Project dependencies and package list.
+* Announcement Management: Full CRUD operations for user listings and posts
+* Category Filtering: Filter announcements by specific topics and tags
+* User Authentication: Secure user registration, authorization, and post ownership
 
 ## Tech Stack
 
-- **Python 3**
-- **Django 5**
-- **SQLite3**
-- **HTML**
+* Python 3
+* Django
+* HTML/CSS
+* SQLite3
+
+## Getting Started
+
+1. Clone the repository:
+   git clone https://github.com/divarusa/bulletin-board-django.git
+   cd bulletin-board-django
+
+2. Setup virtual environment and dependencies:
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install django
+
+3. Run migrations and start the server:
+   python manage.py migrate
+   python manage.py runserver
